@@ -30,6 +30,7 @@ rawflight_create_config() {
     socat TCP:rawflight.eu:"$portnumber" TCP:127.0.0.1:30003
     sleep 3;
   done" > rawflight.sh
+  
   mkdir /root/rawflight
   mv rawflight.sh /root/rawflight
   chmod +x /root/rawflight/rawflight.sh
