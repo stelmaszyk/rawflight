@@ -1,0 +1,17 @@
+[Unit]
+Description=Socat service to push receiver via socat to VRS
+After=network-online.target
+
+[Timer]
+OnBootSec=60
+
+[Service]
+Type=simple
+ExecStart=/home/pi/rawflight.sh
+user=root
+Restart=on-failure
+StartLimitBurst=2
+
+[Install]
+WantedBy=multi-user.target
+
