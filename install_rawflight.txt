@@ -73,30 +73,11 @@ wrongkey() {
   exit 1
 }
 
-check_install_socat() {
-  if [ -x /usr/bin/socat ]; then {
-    echo "Socat is installed. Continuing configuration"
-  } else {
-    echo "Socat is not installed. Do you want to install socat? Without socat script WILL NOT work. (y/n)"
-    read socatkey
-    case "$socatkey" in
-      "y") echo "Installing socat from repository"
-            apt-get install socat -y
-            echo " ";;
-      "n") echo "User refused to install socat. Exiting now."
-            exiter;;
-      *) echo "Unrecognized option. Exiting now."
-          exiter;;
-        }
-  }
-}
-
 if [ "$(whoami)" != "root" ]
   then echo "Please run this script as admin (use sudo or sudo su)"
 
   else
     if [ -x /usr/bin/dump1090-fa ] || [ -x /usr/bin/dump1090-mutability ] || [ -x /usr/bin/dump1090 ]; then {
-      check_install_socat
       rawflight_create_config
       rawflight_create_service
     } else {
@@ -104,7 +85,6 @@ if [ "$(whoami)" != "root" ]
       read key
       case "$key" in
           "y") install_dump
-                check_install_socat
                 rawflight_create_config
                 rawflight_create_service;;
           "n") exiter;;
