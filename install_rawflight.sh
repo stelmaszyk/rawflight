@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Update script: Script will be useless for next few days until Dedicated port for ADS-B Splitter will be openen
 install_dump()
 {
   echo "Downloading Dump1090. It'll few seconds"
