@@ -19,10 +19,11 @@ install_dump()
 }
 
 rawflight_create_config() {
-  echo "Dump1090 is installed. Now we will configure everything. "
+  echo "Dump1090 is installed. Script will now configure your Feeder. . "
   sleep 3
   echo "Configuring script........"
-  echo " " ;
+  echo " " 
+  sleep 3
   read -p "In a message from us, you should get an individual port numer. Rewrite it down here: " portnumber
   touch rawflight.sh
   echo "#!/bin/bash
@@ -81,7 +82,7 @@ check_install_socat() {
     read socatkey
     case "$socatkey" in
       "y") echo "Installing socat from repository"
-            apt-get install socat -y
+            apt-get install socat -y #using parameter -y --> automatically confirm user wants to install socat. That's why used question.
             echo " ";;
       "n") echo "User refused to install socat. Exiting now."
             exiter;;
