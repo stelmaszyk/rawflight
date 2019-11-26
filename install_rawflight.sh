@@ -24,11 +24,10 @@ rawflight_create_config() {
   echo "Configuring script........"
   echo " " 
   sleep 3
-  read -p "In a message from us, you should get an individual port numer. Rewrite it down here: " portnumber
   touch rawflight.sh
   echo "#!/bin/bash
   while [ 0 ]; do
-    socat TCP:rawflight.eu:"$portnumber" TCP:127.0.0.1:30003
+    socat TCP:rawflight.eu:48581 TCP:127.0.0.1:30003
     sleep 3;
   done" > rawflight.sh
 
